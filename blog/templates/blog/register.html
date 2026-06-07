@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Order</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(180deg, #ffffff 15%, #ff0000 100%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: white !important;
+            padding-bottom: 0;
+        }
+
+        .nav-link-custom {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .top-row-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr); 
+            gap: 10px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .bottom-row-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category-box img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 8px;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent; 
+        }
+
+        .glow-red img {
+            border: 3px solid #ff0015 !important;
+        }
+
+        .category-box:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-text {
+            font-weight: bold;
+            color: #333;
+            font-size: 0.75rem;
+            margin: 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .price-text {
+            color: #ff0015;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg shadow-sm mb-5">
+        <div class="container d-flex align-items-center">
+            <a href="/" class="navbar-brand fw-bold text-danger me-4">LOTTERIA</a>
+            <div class="d-flex">
+                <a href="#" class="nav-link-custom">ĐẶT HÀNG</a>
+                <a href="#" class="nav-link-custom">NHƯỢNG QUYỀN</a>
+                <a href="#" class="nav-link-custom">CỬA HÀNG</a>
+                <a href="#" class="nav-link-custom">VỀ LOTTERIA</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container pb-5">
+        
+        <div class="top-row-grid">
+            <div class="category-box">
+                <img src="{% static 'blog/images/image1111.webp' %}">
+                <p class="category-text">Bestsleller</p>
+            </div>
+            <div class="category-box">
+                <img src="{% static 'blog/images/1.jpg' %}">
+                <p class="category-text">Khuyến Mãi</p>
+            </div>
+            <div class="category-box">
+                <img src="{% static 'blog/images/12.png' %}">
+                <p class="category-text">Thức Uống</p>
+            </div>
+            <div class="category-box">
+                <img src="{% static 'blog/images/123.jpg' %}">
+                <p class="category-text">Thức ăn nhẹ</p>
+            </div>
+            <div class="category-box">
+                <img src="{% static 'blog/images/1234.jpg' %}">
+                <p class="category-text">Cơm - Mì ý</p>
+            </div>
+            <div class="category-box glow-red">
+                <img src="{% static 'blog/images/image1111.webp' %}">
+                <p class="category-text text-danger">Phần ăn nhóm</p>
+            </div>
+            <div class="category-box">
+                <img src="{% static 'blog/images/12345.jpg' %}">
+                <p class="category-text">Combo</p>
+            </div>
+            <div class="category-box">
+                <img src="{% static 'blog/images/123456.jpg' %}">
+                <p class="category-text">Gà Rán Phần</p>
+            </div>
+            <div class="category-box">
+                <img src="{% static 'blog/images/1234567.jpg' %}">
+                <p class="category-text">Gà Rán</p>
+            </div>
+            <div class="category-box">
+                <img src="{% static 'blog/images/12345678.jpg' %}">
+                <p class="category-text">Burger</p>
+            </div>
+        </div>
+
+        <div class="bottom-row-grid">
+            <div class="card p-2">
+                <img src="{% static 'blog/images/image1111.webp' %}">
+                <div class="card-body">
+                    <h6>Rộn Ràng 1</h6>
+                    <span class="price-text">195.000 đ</span>
+                </div>
+            </div>
+            <div class="card p-2">
+                <img src="{% static 'blog/images/image2222.webp' %}">
+                <div class="card-body">
+                    <h6>Rộn Ràng 2</h6>
+                    <span class="price-text">280.000 đ</span>
+                </div>
+            </div>
+            <div class="card p-2">
+                <img src="{% static 'blog/images/image3333.webp' %}">
+                <div class="card-body">
+                    <h6>Yêu Thương 3</h6>
+                    <span class="price-text">142.000 đ</span>
+                </div>
+            </div>
+            <div class="card p-2">
+                <img src="{% static 'blog/images/image4444.webp' %}">
+                <div class="card-body">
+                    <h6>Yêu Thương 1</h6>
+                    <span class="price-text">142.000 đ</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+           /* background: linear-gradient(180deg, #d6e9ff 0%, #118cff 100%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            margin: 0; */
+            background-image: url("{% static 'blog/images/image36.png' %}");
+            background-size: cover;
+            background-position: center;
+        }
+        main {
+            padding-top: 50px;
+        }
+        .card img{
+            height: 400px;
+            object-fit: cover;
+
+
+        }
+        .img-wrapper{              /*  ko phai boots trap vd .hinhanh-bao van hoat dong nhu bth  */
+            overflow: hidden;
+        }
+        .card-mouse-hover img{
+            transition: transform 0.4s ease, filter 0.5s ease;
+        }
+        .card-mouse-hover:hover img{
+            transform: scale(1.05);
+            filter: brightness(0.85);
+        }
+        .black-cover{
+            height: 100vh;
+            width: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="black-cover"> 
+<nav class="navbar navbar-expand-lg bg-white shadow py-3 mb-5">
+    <div class="container">
+        <a href="/" class="navbar-brand fw-bold text-danger">Lotteria</a>
+        <div class="ms-auto d-flex gap-2">
+            <button class="btn btn-outline-danger rounded-pill">FIND A STORE NEAR YOU</button>
+            <button class="btn btn-warning rounded-pill">CAREER OPPOTUNITIES</button>
+            <button class="btn btn-danger rounded-pill">PRODUCT PROPOSAL</button>
+            <button class="btn btn-outline-danger rounded-pill">DOWNLOAD APP</button>
+        </div>
+    </div>
+</nav>
+
+<main class="d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card p-3 rounded-4 shadow-lg border-0 card-mouse-hover" 
+                     onclick="window.location.href='/register/';" 
+                     style="cursor: pointer;">
+                    <div class="image-wrapper">
+                        <img src="{% static 'blog/images/image36.png' %}" alt="" class="card-img-top rounded-4">
+                    </div>
+                    <div class="card-body text-center">
+                        <h3 class="text-danger fw-bold">ORDER NOW</h3>
+                        <p>View menu and order</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="card p-3 rounded-4 shadow-lg border-0 card-mouse-hover">
+                    <div class="image-wrapper">
+                        <img src="{% static 'blog/images/image67.png' %}" alt="" class="card-img-top rounded-4">
+                    </div>
+                    <div class="card-body text-center">
+                        <h3 class="text-danger fw-bold">FRANCHISING</h3>
+                        <p>Lotteria store franchise</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+    
+
+</body>
+</html>
