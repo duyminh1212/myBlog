@@ -1,54 +1,184 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(180deg, #1683ff 0%, #edf6ff 100%);
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+        main {
+            padding-top: 50px;
+        }
+        .card img{
+            height: 400px;
+            object-fit: cover;
+        }
+        .img-wrapper{ 
+            overflow: hidden;
+        }
+        .card-mouse-hover img{
+            transition: transform 0.4s ease, filter 0.5s ease;
+        }
+        .card-mouse-hover:hover img{
+            transform: scale(1.05);
+            filter: brightness(0.85);
+        }
+        .black-cover{
             min-height: 100vh;
+            width: 100%;
+        }
+        
+        
+        .sub-nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .sub-nav-link.active {
+            color: #dc3545;
+            border-bottom: 2px solid #dc3545;
+            padding-bottom: 5px;
+        }
+        .info-section {
+            max-width: 850px;
+            margin: 0 auto;
+            color: #333;
+            font-size: 14px;
+        }
+        .company-title {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .custom-footer {
+            background-color: #fde2e4;
+            color: #333;
+            font-size: 13px;
+        }
+        .footer-heading {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        .footer-links list-unstyled li {
+            margin-bottom: 6px;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
-    <div class="container">
-        <a class="navbar-brand" href="#">Giới thiệu</a>
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/">Trang chủ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1:8000/register/">Đăng nhập</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Tin tức</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Liên hệ</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                        Ngôn ngữ
-                    </a>
-                </li>
-            </ul>
+    <div class="black-cover"> 
+        <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
+            <div class="container">
+                <a href="/" class="navbar-brand fw-bold text-danger">Lotteria</a>
+                <div class="ms-auto d-flex gap-2">
+                    <button class="btn btn-outline-danger rounded-pill">FIND A STORE NEAR YOU</button>
+                    <button class="btn btn-warning rounded-pill">CAREER OPPOTUNITIES</button>
+                    <button class="btn btn-danger rounded-pill">PRODUCT PROPOSAL</button>
+                    <button class="btn btn-outline-danger rounded-pill">DOWNLOAD APP</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container my-4 text-center">
+            <div class="d-flex justify-content-center gap-4">
+                <a href="#" class="sub-nav-link">TÌM CỬA HÀNG</a>
+                <a href="#" class="sub-nav-link active">CÂU CHUYỆN THƯƠNG HIỆU</a>
+            </div>
         </div>
+
+        <main class="container mb-5">
+            <div class="info-section">
+                <h3 class="text-center fw-bold mb-4" style="letter-spacing: 1px;">GIỚI THIỆU VỀ LOTTERIA VIỆT NAM</h3>
+                
+                <p class="lh-lg mb-3">
+                    <strong>Lotteria</strong> là chuỗi nhà hàng thức ăn nhanh trực thuộc tập đoàn Lotte – một trong năm tập đoàn lớn nhất Hàn Quốc. Suốt 7 năm liền đứng vị trí số 1 về "Brand Power", được cấp bởi "Korea Management Association", và được chọn là vị trí số 1 về năng lực cạnh tranh thương hiệu với danh hiệu "Brand Stock" của cơ quan đánh giá giá trị thương hiệu.
+                </p>
+                
+                <p class="lh-lg mb-3">
+                    Trong suốt thời gian qua, Lotteria đã nỗ lực không ngừng để cung cấp cho khách hàng dịch vụ chu đáo, ân cần và không ngừng nghiên cứu để phát triển nền văn hóa ẩm thực tốt cho sức khỏe. Hơn nữa, để đảm bảo vệ sinh, an toàn thực phẩm và bảo vệ môi trường, Lotteria tự hào đạt được các chứng nhận quốc tế như:
+                </p>
+                
+                <ul class="mb-4 lh-lg">
+                    <li>An toàn thực phẩm (RVA HACCP)</li>
+                    <li>Vệ sinh môi trường (ISO 14001)</li>
+                    <li>Chất lượng sản phẩm (ISO 9001)</li>
+                </ul>
+                
+                <p class="lh-lg mb-5">
+                    Lotteria có mặt tại thị trường Việt Nam từ năm 1998. Hiện nay, mang tầm vóc của doanh nghiệp quốc tế, Lotteria đang dẫn đầu ngành công nghiệp ăn uống quốc nội với hơn 240 nhà hàng tại 30 tỉnh/thành trên cả nước. Đây là kết quả của những nỗ lực không ngừng mà Lotteria đạt được.
+                </p>
+
+                <div class="row align-items-start mt-4 g-4">
+                    <div class="col-md-6">
+                        <div class="img-wrapper rounded shadow-sm">
+                            <img src="{% static 'blog/images/hhhhh.jpg' %}" alt="Lotteria Store Front" class="w-100 h-auto d-block">
+                        </div>
+                    </div>
+                    <div class="col-md-6 ps-md-4">
+                        <h4 class="company-title mb-3">VIETNAM LOTTERIA CO.LTD</h4>
+                        <p class="mb-2"><strong>Địa chỉ:</strong> Tầng 10, Cobi Tower II</p>
+                        <p class="mb-2">Số 2-4 Đường số 8, Phường Tân Phú, Thành phố Hồ Chí Minh, Việt Nam.</p>
+                        <p class="mb-2"><strong>Tel:</strong> (84-8) 5416 1072 ~ 79</p>
+                        <p class="mb-2"><strong>Fax:</strong> (84-8) 5416 1080 ~ 81</p>
+                        <p class="mb-2"><strong>Email:</strong> info@lotteria.vn</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="custom-footer py-5 mt-auto">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="mb-3 text-danger fw-bold fs-4">Lotteria</div>
+                        <p class="fw-bold mb-2">ĐĂNG KÝ NHẬN THÔNG TIN KHUYẾN MÃI</p>
+                        <div class="input-group mb-3" style="max-width: 300px;">
+                            <input type="email" class="form-control form-control-sm rounded-start" placeholder="Nhập email của bạn">
+                            <button class="btn btn-danger btn-sm rounded-end" type="button">Gửi ngay →</button>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="footer-heading">THÔNG TIN</div>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-decoration-none text-dark">Tin tức</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Khuyến mãi</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Tuyển dụng</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Nhượng quyền</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Đăng ký chào hàng</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="footer-heading">HỖ TRỢ</div>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-decoration-none text-dark">Điều khoản sử dụng</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Chính sách bảo mật</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Chính sách giao hàng</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Chăm sóc khách hàng</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Chính sách thành viên</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-md-2">
+                        <div class="footer-heading">THEO DÕI</div>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-decoration-none text-dark">Facebook</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Instagram</a></li>
+                            <li><a href="#" class="text-decoration-none text-dark">Zalo</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <hr class="my-4 text-muted">
+                <div class="text-center text-muted style-copyright" style="font-size: 11px;">
+                    © 2022 Lotteria All Rights Reserved. Site by LDCC
+                </div>
+            </div>
+        </footer>
     </div>
     
-
-    
-</nav>
-<h1>Tin Tức</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
