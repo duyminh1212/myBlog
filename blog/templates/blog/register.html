@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register | Order</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <style>
         body {
             background: linear-gradient(180deg, #ffffff 15%, #ff0000 100%);
@@ -77,12 +78,18 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease;
         }
 
         .card img {
             height: 180px;
             object-fit: cover;
             transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
         }
 
         .card:hover img {
@@ -93,23 +100,72 @@
             color: #ff0015;
             font-weight: bold;
         }
+
+        
+        .btn-bag {
+            background-color: #ff0015;
+            color: white;
+            font-weight: bold;
+            border: none;
+            position: relative;
+        }
+        .btn-bag:hover {
+            background-color: #d60012;
+            color: white;
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg shadow-sm mb-5">
-        <div class="container d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
             <a href="/" class="navbar-brand fw-bold text-danger me-4">LOTTERIA</a>
-            <div class="d-flex">
+            <div class="d-flex me-auto">
                 <a href="#" class="nav-link-custom">ĐẶT HÀNG</a>
-                <a href="" class="nav-link-custom ">NHƯỢNG QUYỀN</a>
-                <a href="#" class="nav-link-custom">CỬA HÀNG</a>
+                <a href="/lotteria/" class="nav-link-custom">NHƯỢNG QUYỀN</a>
+                <a href="/" class="nav-link-custom">CỬA HÀNG</a>
                 <a href="/about/" class="nav-link-custom">VỀ LOTTERIA</a>
+            </div>
+            
+            <div class="d-flex align-items-center gap-3">
+                <button class="btn btn-bag px-4 py-2 rounded-pill shadow-sm d-flex align-items-center gap-2">
+                    <i class="bi bi-bag-fill"></i> BAG 
+                    <span id="bag-count" class="badge bg-white text-danger rounded-circle">0</span>
+                </button>
+
+                <a href="/login/" class="btn btn-outline-danger fw-bold px-4 py-2 rounded-pill shadow-sm" style="font-size: 14px; background-color: white;">
+                    ĐĂNG NHẬP
+                </a>
             </div>
         </div>
     </nav>
 
     <div class="container pb-5">
+        
+        <div class="text-center mb-3">
+            {% if username %}
+                <h3 class="fw-bold text-dark bg-white d-inline-block px-4 py-2 rounded-pill shadow-sm border border-danger">
+                    👋 Hi <span class="text-danger">{{ username }}</span>!
+                </h3>
+            {% else %}
+                <h4 class="fw-bold text-white bg-secondary d-inline-block px-4 py-2 rounded-pill shadow-sm">
+                    👋 hi would you log in so i can khow your name
+                </h4>
+            {% endif %}
+        </div>
+
+        <div class="text-center mb-5">
+            <form action="" method="POST" class="d-inline-flex gap-2">
+                {% csrf_token %}
+                <input type="text" name="discount_code" class="form-control rounded-pill px-3" placeholder="Nhập mã giảm giá..." value="{{ discount_code }}" style="width: 250px;">
+                <button type="submit" class="btn btn-danger fw-bold rounded-pill px-4">Áp dụng</button>
+            </form>
+            {% if is_discounted %}
+                <div class="text-success small fw-bold mt-2">🎉 Đã áp dụng mã "-andawde-". Giá quay về mức bình thường!</div>
+            {% elif discount_code %}
+                <div class="text-white small fw-bold mt-2 bg-dark d-inline-block px-3 py-1 rounded-pill">❌ Mã giảm giá sai rồi bạn ơi!</div>
+            {% endif %}
+        </div>
         
         <div class="top-row-grid">
             <div class="category-box">
@@ -141,51 +197,40 @@
                 <p class="category-text">Combo</p>
             </div>
             <div class="category-box">
-                <img src="{% static 'blog/images/123456.jpg' %}">
+                <img src="{% static 'blog/images/1234567.jpg' %}">
                 <p class="category-text">Gà Rán Phần</p>
             </div>
             <div class="category-box">
-                <img src="{% static 'blog/images/1234567.jpg' %}">
+                <img src="{% static 'blog/images/12345678.jpg' %}">
                 <p class="category-text">Gà Rán</p>
             </div>
             <div class="category-box">
-                <img src="{% static 'blog/images/12345678.jpg' %}">
+                <img src="{% static 'blog/images/123456789.jpg' %}">
                 <p class="category-text">Burger</p>
             </div>
         </div>
 
         <div class="bottom-row-grid">
-            <div class="card p-2">
-                <img src="{% static 'blog/images/image1111.webp' %}">
+            {% for item in menu_items %}
+            <div class="card p-2" onclick="addToBag()">
+                <img src="{% static item.image %}">
                 <div class="card-body">
-                    <h6>Rộn Ràng 1</h6>
-                    <span class="price-text">195.000 đ</span>
+                    <h6>{{ item.name }}</h6>
+                    <span class="price-text">{{ item.display_price }}</span>
                 </div>
             </div>
-            <div class="card p-2">
-                <img src="{% static 'blog/images/image2222.webp' %}">
-                <div class="card-body">
-                    <h6>Rộn Ràng 2</h6>
-                    <span class="price-text">280.000 đ</span>
-                </div>
-            </div>
-            <div class="card p-2">
-                <img src="{% static 'blog/images/image3333.webp' %}">
-                <div class="card-body">
-                    <h6>Yêu Thương 3</h6>
-                    <span class="price-text">142.000 đ</span>
-                </div>
-            </div>
-            <div class="card p-2">
-                <img src="{% static 'blog/images/image4444.webp' %}">
-                <div class="card-body">
-                    <h6>Yêu Thương 1</h6>
-                    <span class="price-text">142.000 đ</span>
-                </div>
-            </div>
+            {% endfor %}
         </div>
 
     </div>
+
+    <script>
+        let count = 0;
+        function addToBag() {
+            count++;
+            document.getElementById('bag-count').innerText = count;
+        }
+    </script>
 
 </body>
 </html>

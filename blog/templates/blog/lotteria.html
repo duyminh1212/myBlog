@@ -1,0 +1,305 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotteria | Nhượng Quyền</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: linear-gradient(180deg, #ffffff 15%, #ff0000 100%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: white !important;
+            padding-bottom: 0;
+        }
+
+        .nav-link-custom {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+
+        .container-custom {
+            max-width: 85%;
+            margin: 0 auto;
+        }
+
+        .btn-bag {
+            background-color: #ff0015;
+            color: white;
+            font-weight: bold;
+            border: none;
+        }
+        .btn-bag:hover {
+            background-color: #d60012;
+            color: white;
+        }
+
+        .brand-intro-title {
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 30px;
+        }
+
+        .hotline-container {
+            display: inline-flex;
+            align-items: center;
+            border: 3px solid #ff0015;
+            border-radius: 50px;
+            padding: 5px 25px;
+            position: relative;
+            background-color: white;
+            margin-top: 15px;
+        }
+
+        .hotline-label {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            color: #ff0015;
+            font-weight: bold;
+            font-size: 11px;
+            padding: 0 10px;
+            white-space: nowrap;
+        }
+
+        .hotline-number {
+            color: #ff0015;
+            font-weight: 900;
+            font-size: 2rem;
+            text-decoration: none;
+        }
+
+        .phone-icon-circle {
+            background-color: #ff0015;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+
+        .form-franchise {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid #f0f0f0;
+        }
+
+        .form-franchise .form-control, .form-franchise .form-select {
+            border: 1px solid #ff6b76;
+            border-radius: 10px;
+            padding: 10px 15px;
+        }
+
+        .form-franchise .form-control::placeholder {
+            color: #b0b0b0;
+        }
+
+        .btn-submit-franchise {
+            background-color: #ff5263;
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 10px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-submit-franchise:hover {
+            background-color: #ff3348;
+        }
+
+        .lang-select {
+            font-size: 12px;
+            font-weight: bold;
+            color: #666;
+            text-decoration: none;
+        }
+        .lang-select.active {
+            color: #ff0015;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg shadow-sm mb-5">
+        <div class="container-custom d-flex align-items-center justify-content-between w-100">
+            <a href="/" class="navbar-brand fw-bold text-danger me-4">LOTTERIA</a>
+            <div class="d-flex me-auto">
+                <a href="/register/" class="nav-link-custom">ĐẶT HÀNG</a>
+                <a href="#" class="nav-link-custom text-danger">NHƯỢNG QUYỀN</a>
+                <a href="/lotteria/" class="nav-link-custom">CỬA HÀNG</a>
+                <a href="/about/" class="nav-link-custom">VỀ LOTTERIA</a>
+            </div>
+            
+            <div class="d-flex align-items-center gap-3">
+                <div class="me-2">
+                    <a href="#" class="lang-select active">VN</a> | 
+                    <a href="#" class="lang-select">EN</a>
+                </div>
+
+                <button class="btn btn-bag px-4 py-2 rounded-pill shadow-sm d-flex align-items-center gap-2">
+                    <i class="bi bi-bag-fill"></i> BAG 
+                    <span id="bag-count" class="badge bg-white text-danger rounded-circle">0</span>
+                </button>
+
+                <a href="/login/" class="btn btn-outline-danger fw-bold px-4 py-2 rounded-pill shadow-sm" style="font-size: 14px; background-color: white;">
+                    ĐĂNG NHẬP
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-custom pb-5">
+        <div class="row align-items-center g-5">
+            
+            <div class="col-md-6 text-center text-md-start">
+                <h1 class="brand-intro-title">BRAND INTRODUCTION</h1>
+                
+                <div class="d-flex align-items-center justify-content-center justify-content-md-start mb-4">
+                    <div class="hotline-container">
+                        <span class="hotline-label">FRANCHISE HOTLINE</span>
+                        <div class="phone-icon-circle">
+                            <i class="bi bi-telephone-fill"></i>
+                        </div>
+                        <a href="tel:19006778" class="hotline-number">1900-6778</a>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-2">
+                    <img src="{% static 'blog/images/image1111.webp' %}" alt="Franchise Map" class="img-fluid rounded-3" style="max-height: 320px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-franchise p-4">
+                    <h5 class="fw-bold text-dark mb-4" style="letter-spacing: 0.5px;">THÔNG TIN LIÊN HỆ</h5>
+                    
+                    <form onsubmit="return false;">
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <label class="form-label small fw-bold text-secondary">Họ tên</label>
+                                <input type="text" class="form-control" placeholder="Nhập tên của bạn">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small fw-bold text-secondary">Email</label>
+                                <input type="email" class="form-control" placeholder="Nhập email của bạn">
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <label class="form-label small fw-bold text-secondary">Điện thoại</label>
+                                <input type="text" class="form-control" placeholder="Nhập số điện thoại của bạn">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small fw-bold text-secondary">Địa chỉ</label>
+                                <input type="text" class="form-control" placeholder="Nhập địa chỉ của bạn">
+                            </div>
+                        </div>
+
+ <div class="mb-3">
+    <label class="form-label small fw-bold text-secondary">Khu vực</label>
+    <select class="form-select">
+        <option value="none" selected disabled>-- Chọn tỉnh / thành phố của bạn --</option>
+        <option value="angiang">An Giang</option>
+        <option value="bariavungtau">Bà Rịa - Vũng Tàu</option>
+        <option value="bacgiang">Bắc Giang</option>
+        <option value="backan">Bắc Kạn</option>
+        <option value="baclieu">Bạc Liêu</option>
+        <option value="bacninh">Bắc Ninh</option>
+        <option value="bentre">Bến Tre</option>
+        <option value="binhdinh">Bình Định</option>
+        <option value="binhduong">Bình Dương</option>
+        <option value="binhphuoc">Bình Phước</option>
+        <option value="binhthuan">Bình Thuận</option>
+        <option value="camau">Cà Mau</option>
+        <option value="cantho">Cần Thơ</option>
+        <option value="caobang">Cao Bằng</option>
+        <option value="danang">Đà Nẵng</option>
+        <option value="daklak">Đắk Lắk</option>
+        <option value="daknong">Đắk Nông</option>
+        <option value="dienbien">Điện Biên</option>
+        <option value="dongnai">Đồng Nai</option>
+        <option value="dongthap">Đồng Tháp</option>
+        <option value="gialai">Gia Lai</option>
+        <option value="hagiang">Hà Giang</option>
+        <option value="hanam">Hà Nam</option>
+        <option value="hanoi">Hà Nội</option>
+        <option value="hatinh">Hà Tĩnh</option>
+        <option value="haiduong">Hải Dương</option>
+        <option value="haiphong">Hải Phòng</option>
+        <option value="haugiang">Hậu Giang</option>
+        <option value="hoabinh">Hòa Bình</option>
+        <option value="hungyen">Hưng Yên</option>
+        <option value="khanhhoa">Khánh Hòa</option>
+        <option value="kiengiang">Kiên Giang</option>
+        <option value="kontum">Kon Tum</option>
+        <option value="laichau">Lai Châu</option>
+        <option value="lamdong">Lâm Đồng</option>
+        <option value="langson">Lạng Sơn</option>
+        <option value="laocai">Lào Cai</option>
+        <option value="longan">Long An</option>
+        <option value="namdinh">Nam Định</option>
+        <option value="nghean">Nghệ An</option>
+        <option value="ninhbinh">Ninh Bình</option>
+        <option value="ninhthuan">Ninh Thuận</option>
+        <option value="phutho">Phú Thọ</option>
+        <option value="phuyen">Phú Yên</option>
+        <option value="quangbinh">Quảng Bình</option>
+        <option value="quangnam">Quảng Nam</option>
+        <option value="quangngai">Quảng Ngãi</option>
+        <option value="quangninh">Quảng Ninh</option>
+        <option value="quangtri">Quảng Trị</option>
+        <option value="soctrang">Sóc Trăng</option>
+        <option value="sonla">Sơn La</option>
+        <option value="tayninh">Tây Ninh</option>
+        <option value="thaibinh">Thái Bình</option>
+        <option value="thainguyen">Thái Nguyên</option>
+        <option value="thanhhoa">Thanh Hóa</option>
+        <option value="thuathienhue">Thừa Thiên Huế</option>
+        <option value="tiengiang">Tiền Giang</option>
+        <option value="tphcm">TP. Hồ Chí Minh</option>
+        <option value="travinh">Trà Vinh</option>
+        <option value="tuyenquang">Tuyên Quang</option>
+        <option value="vinhlong">Vĩnh Long</option>
+        <option value="vinhphuc">Vĩnh Phúc</option>
+        <option value="yenbai">Yên Bái</option>
+    </select>
+</div>
+
+                        <div class="mb-4">
+                            <label class="form-label small fw-bold text-secondary">Lời nhắn</label>
+                            <textarea class="form-control" rows="3" placeholder="Để lại lời nhắn của bạn tại đây"></textarea>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="button" class="btn btn-submit-franchise shadow-sm">Gửi ngay</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

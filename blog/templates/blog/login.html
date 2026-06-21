@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotteria | Đăng Nhập</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(180deg, #ffffff 15%, #ff0000 100%);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: white !important;
+            padding-bottom: 0;
+        }
+        .nav-link-custom {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+        .card-login {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        .btn-lotteria {
+            background-color: #ff0015;
+            color: white;
+            border: none;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+        .btn-lotteria:hover {
+            background-color: #d60012;
+            color: white;
+            transform: scale(1.02);
+        }
+        .image-box {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        /* CSS để ảnh lấp đầy khung bo tròn vuông vắn */
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg shadow-sm mb-5">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="/" class="navbar-brand fw-bold text-danger me-4">LOTTERIA</a>
+            <div class="d-flex me-auto">
+                <a href="/register/" class="nav-link-custom">ĐẶT HÀNG</a>
+                <a href="/lotteria/" class="nav-link-custom">NHƯỢNG QUYỀN</a>
+                <a href="/" class="nav-link-custom">CỬA HÀNG</a>
+                <a href="/about/" class="nav-link-custom">VỀ LOTTERIA</a>
+            </div>
+            <div class="d-flex">
+                <a href="/register/" class="btn btn-outline-danger fw-bold px-4 py-2 rounded-pill" style="font-size: 14px;">
+                    ĐĂNG KÝ
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container pb-5">
+        <div class="text-center mb-4">
+            <h5 class="fw-bold text-white bg-danger d-inline-block px-4 py-2 rounded-pill shadow">
+                🍔 Bạn không cần đăng nhập vẫn có thể đặt hàng, nhưng đăng nhập sẽ nhận được nhiều ưu đãi tốt hơn!
+            </h5>
+        </div>
+
+        <div class="row g-4 justify-content-center align-items-stretch">
+            <div class="col-md-5">
+                <div class="card card-login p-4 h-100">
+                    <h3 class="fw-bold text-dark mb-4 text-center">ĐĂNG NHẬP</h3>
+
+                    {% if username and not error %}
+                        <div class="alert alert-success text-center mb-4 border-0 shadow-sm" style="border-radius: 15px;">
+                            <h5 class="fw-bold text-success mb-1">🎉 Congratulations!</h5>
+                            <p class="small text-muted mb-1">You have made your account successfully!</p>
+                            <p class="mb-0">Tài khoản: <strong>{{ username }}</strong></p>
+                        </div>
+                    {% endif %}
+
+                    {% if error %}
+                        <div class="alert alert-warning text-center mb-4 border-0 shadow-sm" style="border-radius: 15px;">
+                            <h5 class="fw-bold text-warning mb-1">⚠️ Notice:</h5>
+                            <p class="small text-muted mb-0">{{ error }}</p>
+                        </div>
+                    {% endif %}
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="username" class="form-label fw-bold small text-secondary">Tên đăng nhập</label>
+                            <input type="text" id="username" name="username" class="form-control py-2" placeholder="Nhập tài khoản..." required>
+                            <div class="form-text text-muted" style="font-size: 11px;">
+                                * Tài khoản và mật khẩu phải từ 8 đến 5000 ký tự (để những người muốn lây tk cua bạn đặt gà rán siêu nhon của chúng tôi, web khuyến nghị nên đặt khoảng 4800 ký tự trở lên).
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="password" class="form-label fw-bold small text-secondary">Mật khẩu</label>
+                            <input type="password" id="password" name="password" class="form-control py-2" placeholder="Nhập mật khẩu..." required>
+                        </div>
+                        <button type="submit" class="btn btn-lotteria w-100 py-2 rounded-pill">ĐĂNG NHẬP ĐAY</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="image-box h-100">
+                    <img src="{% static 'blog/images/login iamge.png' %}" alt="Lotteria Food">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
